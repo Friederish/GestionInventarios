@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,10 +16,19 @@ namespace GestionDeInventario
             productos = new List<Producto>();
         }
 
-
         public void AgregarProducto(Producto producto)
         {
             productos.Add(producto);
+        }
+        public bool ActualizarPrecio(string nombre, decimal nuevoPrecio) 
+        { 
+            var producto = productos.FirstOrDefault(p => p.Nombre == nombre); 
+            if (producto != null) 
+            { 
+                producto.Precio = nuevoPrecio; 
+                return true; 
+            } 
+                return false; 
         }
 
         // Método para filtrar y ordenar los productos por precio mínimo
